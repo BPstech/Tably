@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TabVault</title>
+  <link rel="stylesheet" href="fonts/inter.css">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-brand">
+        <div class="brand-logo">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+            <polyline points="17 21 17 13 7 13 7 21"></polyline>
+            <polyline points="7 3 7 8 15 8"></polyline>
+          </svg>
+        </div>
+        <div>
+          <h1 class="brand-title">TabVault</h1>
+          <span class="brand-sub">Tab Session Manager</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="openDashboardBtn" class="icon-btn" title="Open full Tab Manager dashboard in new tab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <polyline points="9 21 3 21 3 15"></polyline>
+            <line x1="21" y1="3" x2="14" y2="10"></line>
+            <line x1="3" y1="21" x2="10" y2="14"></line>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Save Tabs Section -->
+    <section class="save-card">
+      <div class="save-card-header">
+        <div class="ram-badge" id="ramBadge" title="Estimated memory used by open tabs">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+          </svg>
+          <span id="openTabsCount">Loading...</span>
+        </div>
+        <span class="save-card-hint">Save this set & free memory</span>
+      </div>
+
+      <div class="save-input-group">
+        <input 
+          type="text" 
+          id="sessionNameInput" 
+          class="session-name-input" 
+          placeholder="e.g. Work Research, React Project, Shopping..."
+          autocomplete="off"
+        />
+        <div class="color-picker-row" id="colorPickerRow">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Tab Selection Dropdown Trigger -->
+      <div class="tab-select-toggle" id="tabSelectToggle">
+        <span id="tabSelectSummary">Includes all tabs</span>
+        <svg class="chevron-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </div>
+
+      <!-- Collapsible Tab Selection List -->
+      <div class="current-tabs-list collapsed" id="currentTabsList">
+        <div class="tab-list-toolbar">
+          <label class="checkbox-label">
+            <input type="checkbox" id="selectAllTabsCheckbox" checked>
+            <span>Select All</span>
+          </label>
+          <span id="selectedCountText" class="count-tag">0 selected</span>
+        </div>
+        <div class="tabs-scroll-area" id="tabsScrollArea">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="save-buttons-row">
+        <button id="saveAndCloseBtn" class="btn btn-primary" title="Save session and close tabs to free up RAM">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
+            <line x1="12" y1="2" x2="12" y2="12"></line>
+          </svg>
+          <span>Save & Close Tabs</span>
+        </button>
+        <button id="saveOnlyBtn" class="btn btn-secondary" title="Save session but keep tabs open in this window">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+          </svg>
+          <span>Save Only</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Search & Saved Sessions Section -->
+    <section class="sessions-section">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <h2 class="section-title">Saved Tab Sets</h2>
+          <span class="badge" id="savedCountBadge">0</span>
+        </div>
+        <div class="search-input-wrap">
+          <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="searchInput" class="search-input" placeholder="Search saved sets or tabs...">
+        </div>
+      </div>
+
+      <!-- List of Saved Sessions -->
+      <div class="sessions-list" id="sessionsList">
+        <!-- Injected via JS -->
+      </div>
+
+      <!-- Empty State -->
+      <div class="empty-state hidden" id="emptyState">
+        <div class="empty-icon">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+            <line x1="12" y1="11" x2="12" y2="17"></line>
+            <line x1="9" y1="14" x2="15" y2="14"></line>
+          </svg>
+        </div>
+        <h3>No saved tab sets yet</h3>
+        <p>Give your current tabs a name above and click <strong>Save & Close</strong> to stash them and free up memory!</p>
+      </div>
+    </section>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast hidden"></div>
+  </div>
+
+  <script src="storage.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

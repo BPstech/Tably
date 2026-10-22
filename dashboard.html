@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TabVault - Tab Manager Dashboard</title>
+  <link rel="stylesheet" href="fonts/inter.css">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <div class="dash-layout">
+    <!-- Sidebar -->
+    <aside class="dash-sidebar">
+      <div class="sidebar-header">
+        <div class="brand-logo">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+            <polyline points="17 21 17 13 7 13 7 21"></polyline>
+            <polyline points="7 3 7 8 15 8"></polyline>
+          </svg>
+        </div>
+        <div>
+          <h1 class="brand-title">TabVault</h1>
+          <span class="brand-sub">Session Dashboard</span>
+        </div>
+      </div>
+
+      <!-- Quick Stash Current Window in Sidebar -->
+      <div class="quick-stash-card">
+        <h3>Stash Open Tabs</h3>
+        <p class="stash-desc">Save tabs in your current active window and release memory.</p>
+        <button id="sidebarStashBtn" class="btn btn-primary btn-full">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
+            <line x1="12" y1="2" x2="12" y2="12"></line>
+          </svg>
+          <span>Stash Current Window</span>
+        </button>
+      </div>
+
+      <!-- Memory & Stats Widget -->
+      <div class="stats-card">
+        <div class="stat-item">
+          <span class="stat-label">Active Sets</span>
+          <span class="stat-val" id="statSetsCount">0</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Total Stashed Tabs</span>
+          <span class="stat-val" id="statTabsCount">0</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Estimated RAM Freed</span>
+          <span class="stat-val ram-highlight" id="statRamSaved">0 MB</span>
+        </div>
+      </div>
+
+      <!-- Backup & Restore Actions -->
+      <div class="backup-actions">
+        <button id="exportJsonBtn" class="btn btn-secondary btn-full">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span>Export Backup (JSON)</span>
+        </button>
+        <label class="btn btn-secondary btn-full file-label">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="17 8 12 3 7 8"></polyline>
+            <line x1="12" y1="3" x2="12" y2="15"></line>
+          </svg>
+          <span>Import Backup</span>
+          <input type="file" id="importJsonInput" accept=".json" style="display: none;">
+        </label>
+      </div>
+
+      <div class="sidebar-footer">
+        <span>TabVault v1.0 • Privacy First</span>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dash-main">
+      <!-- Toolbar -->
+      <div class="dash-toolbar">
+        <div class="search-box">
+          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="dashSearchInput" placeholder="Search by set name, tab title, or website URL...">
+        </div>
+
+        <div class="toolbar-actions">
+          <button id="restoreAllSetsBtn" class="btn btn-secondary btn-sm" title="Restore all sessions in new windows">
+            Restore All
+          </button>
+          <button id="clearAllSetsBtn" class="btn btn-danger btn-sm" title="Clear all saved sessions">
+            Clear All
+          </button>
+        </div>
+      </div>
+
+      <!-- Sessions Grid / Cards Container -->
+      <div class="dash-content-area">
+        <div class="grid-container" id="dashGrid">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Empty State -->
+        <div class="empty-state hidden" id="dashEmptyState">
+          <div class="empty-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+              <line x1="12" y1="11" x2="12" y2="17"></line>
+              <line x1="9" y1="14" x2="15" y2="14"></line>
+            </svg>
+          </div>
+          <h2>No saved tab collections yet</h2>
+          <p>Click "Stash Current Window" in the sidebar or use the extension icon in your toolbar to save any set of tabs anytime.</p>
+        </div>
+      </div>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast hidden"></div>
+  </div>
+
+  <script src="storage.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>
