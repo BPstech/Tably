@@ -85,6 +85,9 @@ MOCK_CURRENT_TABS = [
 def get_injection_script(sessions, current_tabs):
     return f"""
     const mockStorage = {{
+        'tably_sessions': {json.dumps(sessions)},
+        'tably_settings': {{ defaultRestoreMode: 'new_window', closeTabsAfterSave: true }},
+        'tably_stats': {{ totalSaved: 48, totalRestored: 32 }},
         'tab_vault_sessions': {json.dumps(sessions)},
         'tab_vault_settings': {{ defaultRestoreMode: 'new_window', closeTabsAfterSave: true }},
         'tab_vault_stats': {{ totalSaved: 48, totalRestored: 32 }}

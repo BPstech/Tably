@@ -1,5 +1,5 @@
 /**
- * TabVault - Background Service Worker (Manifest V3)
+ * Tably - Background Service Worker (Manifest V3)
  */
 
 importScripts('storage.js');
@@ -7,7 +7,7 @@ importScripts('storage.js');
 // Update badge count
 async function updateBadge() {
   try {
-    const sessions = await TabVaultStorage.getSessions();
+    const sessions = await TablyStorage.getSessions();
     const count = sessions.length;
     if (count > 0) {
       chrome.action.setBadgeText({ text: count.toString() });
@@ -29,13 +29,13 @@ chrome.runtime.onInstalled.addListener(() => {
     chrome.contextMenus.removeAll(() => {
       chrome.contextMenus.create({
         id: 'stash_all_tabs',
-        title: 'TabVault: Stash all tabs in this window',
+        title: 'Tably: Stash all tabs in this window',
         contexts: ['action', 'page']
       });
 
       chrome.contextMenus.create({
         id: 'open_dashboard',
-        title: 'TabVault: Open Tab Manager Dashboard',
+        title: 'Tably: Open Tab Manager Dashboard',
         contexts: ['action']
       });
     });
@@ -95,7 +95,7 @@ async function stashCurrentWindow(targetWindowId) {
     const dateStr = new Date().toLocaleDateString([], { month: 'short', day: 'numeric' });
     const sessionName = `Quick Stash • ${dateStr} at ${timeStr}`;
 
-    await TabVaultStorage.saveSession({
+    await TablyStorage.saveSession({
       name: sessionName,
       tabs: validTabs
     });

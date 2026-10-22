@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "TabVault - Tab Session Manager",
+  "name": "Tably - Tab Session Manager",
   "version": "1.0.0",
   "description": "Save tab sets with custom names, close them to free memory, and restore all in one click whenever you need them again.",
   "permissions": [

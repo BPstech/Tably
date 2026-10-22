@@ -1,5 +1,5 @@
 /**
- * TabVault - Popup Controller
+ * Tably - Popup Controller
  */
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       selectedTabIds = new Set(currentWindowTabs.map(t => t.id));
 
       const tabCount = currentWindowTabs.length;
-      const memEst = TabVaultStorage.estimateMemorySaved(tabCount);
+      const memEst = TablyStorage.estimateMemorySaved(tabCount);
       openTabsCountEl.textContent = `${tabCount} tabs (~${memEst} RAM)`;
 
       // Smart placeholder / pre-fill
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       const fav = document.createElement('img');
       fav.className = 'tab-favicon';
-      fav.src = tab.favIconUrl || TabVaultStorage.getFaviconFallback(tab.url);
+      fav.src = tab.favIconUrl || TablyStorage.getFaviconFallback(tab.url);
       fav.onerror = () => { fav.style.display = 'none'; };
 
       const title = document.createElement('span');
@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', async () => {
    * Load and render saved sessions from storage
    */
   async function loadSavedSessions() {
-    savedSessions = await TabVaultStorage.getSessions();
+    savedSessions = await TablyStorage.getSessions();
     renderSavedSessions();
   }
 
@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     tabsCount.textContent = `${session.tabs.length} tabs`;
 
     const timeAgo = document.createElement('span');
-    timeAgo.textContent = TabVaultStorage.formatTimeAgo(session.createdAt);
+    timeAgo.textContent = TablyStorage.formatTimeAgo(session.createdAt);
 
     meta.appendChild(tabsCount);
     meta.appendChild(timeAgo);
@@ -244,7 +244,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     previewTabs.forEach(t => {
       const img = document.createElement('img');
       img.className = 'preview-fav';
-      img.src = t.favIconUrl || TabVaultStorage.getFaviconFallback(t.url);
+      img.src = t.favIconUrl || TablyStorage.getFaviconFallback(t.url);
       img.title = t.title;
       img.onerror = () => { img.style.display = 'none'; };
       favStrip.appendChild(img);
@@ -373,7 +373,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       const fav = document.createElement('img');
       fav.className = 'tab-favicon';
-      fav.src = tab.favIconUrl || TabVaultStorage.getFaviconFallback(tab.url);
+      fav.src = tab.favIconUrl || TablyStorage.getFaviconFallback(tab.url);
       fav.onerror = () => { fav.style.display = 'none'; };
 
       const title = document.createElement('span');
@@ -398,7 +398,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       `;
       removeBtn.addEventListener('click', async (e) => {
         e.stopPropagation();
-        await TabVaultStorage.removeTabFromSession(session.id, tabIdx);
+        await TablyStorage.removeTabFromSession(session.id, tabIdx);
         showToast('Tab removed');
         await loadSavedSessions();
       });
@@ -477,7 +477,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     optConsume.addEventListener('click', async () => {
       menu.remove();
       await restoreSession(session, 'new_window');
-      await TabVaultStorage.deleteSession(session.id);
+      await TablyStorage.deleteSession(session.id);
       await loadSavedSessions();
     });
 
@@ -579,7 +579,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const commitRename = async () => {
       const newName = input.value.trim() || currentName;
       if (newName !== currentName) {
-        await TabVaultStorage.updateSession(session.id, { name: newName });
+        await TablyStorage.updateSession(session.id, { name: newName });
         showToast('Set renamed');
         await loadSavedSessions();
       } else {
@@ -606,7 +606,7 @@ document.addEventListener('DOMContentLoaded', async () => {
    */
   async function handleDeleteSession(session) {
     if (confirm(`Delete tab set "${session.name}"?`)) {
-      await TabVaultStorage.deleteSession(session.id);
+      await TablyStorage.deleteSession(session.id);
       showToast('Tab set deleted');
       await loadSavedSessions();
     }
@@ -629,14 +629,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     saveOnlyBtn.disabled = true;
 
     try {
-      await TabVaultStorage.saveSession({
+      await TablyStorage.saveSession({
         name: sessionName,
         tabs: tabsToSave,
         color: selectedColor
       });
 
       const tabCount = tabsToSave.length;
-      const memSaved = TabVaultStorage.estimateMemorySaved(tabCount);
+      const memSaved = TablyStorage.estimateMemorySaved(tabCount);
 
       if (shouldClose) {
         // If closing all tabs in this window, create a new blank tab first so Chrome window remains open

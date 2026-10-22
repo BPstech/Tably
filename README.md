@@ -1,8 +1,8 @@
 <div align="center">
 
-  <img src="icons/icon128.png" alt="TabVault Logo" width="96" height="96" />
+  <img src="icons/icon128.png" alt="Tably Logo" width="96" height="96" />
 
-  # TabVault 🗄️⚡
+  # Tably 🗄️⚡
   ### The High-Performance Tab Session Manager for Google Chrome
 
   <p align="center">
@@ -13,7 +13,7 @@
     <a href="#-key-features"><img src="https://img.shields.io/badge/Manifest-V3-6366f1?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Manifest V3" /></a>
     <a href="#-privacy--permissions"><img src="https://img.shields.io/badge/Privacy-100%25%20Local-10b981?style=for-the-badge&logo=shield&logoColor=white" alt="100% Local" /></a>
     <a href="#-how-to-install"><img src="https://img.shields.io/badge/Chrome-Extension-4285F4?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Chrome Extension" /></a>
-    <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-f59e0b?style=for-the-badge" alt="License: MIT" /></a>
+    <a href="https://github.com/BPstech/Tably"><img src="https://img.shields.io/badge/GitHub-BPstech%2FTably-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Repository" /></a>
   </p>
 
   <p align="center">
@@ -28,13 +28,13 @@
 
   ---
 
-  <img src="screenshots/dashboard-overview.png" alt="TabVault Dashboard Overview" width="100%" />
+  <img src="screenshots/dashboard-overview.png" alt="Tably Dashboard Overview" width="100%" />
 
 </div>
 
 <br/>
 
-## 💡 The Problem TabVault Solves
+## 💡 The Problem Tably Solves
 
 When multitasking, researching, or context-switching between projects, it's easy to accumulate **20, 40, or 60+ open tabs**. You cannot close them because you'll lose your train of thought, but keeping them open:
 
@@ -42,7 +42,7 @@ When multitasking, researching, or context-switching between projects, it's easy
 * 🔋 **Kills Battery Life**: Heavy background scripts drain laptop battery and trigger noisy fans.
 * 🌪️ **Clutters Your Brain**: Tab titles shrink until they are illegible, turning your browser into a wall of indistinguishable favicons.
 
-**TabVault provides the cleanest solution:**
+**Tably provides the cleanest solution:**
 1. **Name and tag** your current window's tabs into a labeled collection.
 2. **Close them immediately** to free memory with the **Save & Close** button.
 3. **Restore all tabs in one click** when you are ready to resume—either in a fresh window or grouped right into your active workspace as a **Chrome Tab Group**!
@@ -55,7 +55,7 @@ When multitasking, researching, or context-switching between projects, it's easy
 Compact, dark-first popup UI featuring dynamic RAM consumption estimators, instant naming, vibrant color tags, and one-click stashing actions.
 
 <div align="center">
-  <img src="screenshots/popup-interface.png" alt="TabVault Popup Interface" width="520" />
+  <img src="screenshots/popup-interface.png" alt="Tably Popup Interface" width="520" />
 </div>
 
 <br/>
@@ -64,7 +64,7 @@ Compact, dark-first popup UI featuring dynamic RAM consumption estimators, insta
 Need to keep your background music or blank scratchpad open? Expand the tab drawer and deselect any tab before saving.
 
 <div align="center">
-  <img src="screenshots/popup-expanded-tabs.png" alt="TabVault Selective Stash Drawer" width="520" />
+  <img src="screenshots/popup-expanded-tabs.png" alt="Tably Selective Stash Drawer" width="520" />
 </div>
 
 <br/>
@@ -73,7 +73,7 @@ Need to keep your background music or blank scratchpad open? Expand the tab draw
 A dedicated workspace (`dashboard.html`) showing aggregate metrics (active collections, total saved tabs, RAM reclaimed), backup utilities, and real-time deep search across session titles, page names, and URLs.
 
 <div align="center">
-  <img src="screenshots/dashboard-overview.png" alt="TabVault Full Dashboard" width="100%" />
+  <img src="screenshots/dashboard-overview.png" alt="Tably Full Dashboard" width="100%" />
 </div>
 
 <br/>
@@ -82,7 +82,7 @@ A dedicated workspace (`dashboard.html`) showing aggregate metrics (active colle
 Filter through dozens of saved tab sets effortlessly as you type.
 
 <div align="center">
-  <img src="screenshots/dashboard-search.png" alt="TabVault Dashboard Search" width="100%" />
+  <img src="screenshots/dashboard-search.png" alt="Tably Dashboard Search" width="100%" />
 </div>
 
 ---
@@ -107,15 +107,15 @@ Filter through dozens of saved tab sets effortlessly as you type.
 
 ## 📥 How to Install
 
-TabVault is built natively with **Chrome Extension Manifest V3** and runs directly in any Chromium-based browser (Google Chrome, Brave, Microsoft Edge, Arc, Opera, Vivaldi).
+Tably is built natively with **Chrome Extension Manifest V3** and runs directly in any Chromium-based browser (Google Chrome, Brave, Microsoft Edge, Arc, Opera, Vivaldi).
 
 ### Step-by-Step Instructions:
 
-1. **Clone or Download** this repository:
+1. **Clone or Download** the repository:
    ```bash
-   git clone https://github.com/your-username/tabvault.git
+   git clone https://github.com/BPstech/Tably.git
    ```
-   *(Or download and extract the ZIP archive into a folder).*
+   *(Or download and extract the ZIP archive into a local folder).*
 
 2. Open Google Chrome and go to the Extensions page:
    ```text
@@ -126,16 +126,16 @@ TabVault is built natively with **Chrome Extension Manifest V3** and runs direct
 
 4. Click the **"Load unpacked"** button in the top-left menu.
 
-5. Select the folder containing `manifest.json`.
+5. Select the project folder (the folder containing `manifest.json`).
 
-6. Click the puzzle icon in Chrome's top toolbar and **pin TabVault** for convenient one-click access!
+6. Click the puzzle icon in Chrome's top toolbar and **pin Tably** for convenient one-click access!
 
 ---
 
 ## 🛠️ Usage Guide
 
 ### 1. Saving Tabs (Stashing)
-1. Click the **TabVault** icon in your Chrome toolbar.
+1. Click the **Tably** icon in your Chrome toolbar.
 2. Check the real-time **RAM consumption badge** (e.g. `6 tabs (~1.1 GB RAM)`).
 3. Enter a custom name (e.g., `ML Research Paper`, `Sprint Review 42`) or keep the auto-suggested title.
 4. Select a color tag to visually distinguish the set.
@@ -143,7 +143,7 @@ TabVault is built natively with **Chrome Extension Manifest V3** and runs direct
 6. Click **"Save & Close Tabs"** to close the tabs and reclaim memory, or **"Save Only"** to keep tabs active.
 
 ### 2. Restoring Tabs
-TabVault offers flexible restoration modes:
+Tably offers flexible restoration modes:
 * **Restore All (Default)**: Opens all tabs in a clean, isolated Chrome window.
 * **Open as Tab Group**: Groups tabs directly into your active window under a colored Chrome Tab Group header.
 * **Add to Current Window**: Appends tabs to your current window without grouping.
@@ -170,7 +170,7 @@ TabVault offers flexible restoration modes:
 
 ## 🏛️ Architecture & Technologies
 
-TabVault is engineered with zero runtime bloat, requiring no heavy frameworks, virtual DOM overhead, or build pipelines:
+Tably is engineered with zero runtime bloat, requiring no heavy frameworks, virtual DOM overhead, or build pipelines:
 
 ```text
 ┌────────────────────────────────────────────────────────┐
@@ -212,7 +212,7 @@ TabVault is engineered with zero runtime bloat, requiring no heavy frameworks, v
 ## 📁 Directory Structure
 
 ```text
-tabvault/
+Tably/
 ├── manifest.json              # Extension manifest (MV3, permissions, shortcuts)
 ├── background.js              # Service worker (shortcuts, badge updates, context menus)
 ├── storage.js                 # Shared persistence layer & session data models
@@ -245,7 +245,7 @@ tabvault/
 
 ## 🛡️ Privacy & Permissions
 
-TabVault is designed with a strict **Privacy-First** philosophy. We do not track you, we do not log your browsing habits, and we never transmit any data across the network.
+Tably is designed with a strict **Privacy-First** philosophy. We do not track you, we do not log your browsing habits, and we never transmit any data across the network.
 
 ### Required Permissions Explained:
 * `tabs`: Required to read active URLs and titles to stash them and to restore tabs upon your command.
@@ -257,18 +257,12 @@ TabVault is designed with a strict **Privacy-First** philosophy. We do not track
 
 ## 🤝 Contributing
 
-Contributions, feature requests, and bug reports are welcome!
-1. Fork the Project.
+Contributions, feature requests, and ideas are welcome!
+1. Fork the Project at [https://github.com/BPstech/Tably](https://github.com/BPstech/Tably).
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`).
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`).
 4. Push to the Branch (`git push origin feature/AmazingFeature`).
 5. Open a Pull Request.
-
----
-
-## 📄 License
-
-Distributed under the **MIT License**. See `LICENSE` for more information.
 
 <div align="center">
   <sub>Built with care for tab hoarders and power users everywhere. ⚡</sub>

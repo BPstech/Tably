@@ -1,12 +1,15 @@
 /**
- * TabVault Storage & Utilities Module
+ * Tably Storage & Utilities Module
  * Handles persistence, tab data shaping, and session management.
  */
 
 const STORAGE_KEYS = {
-  SESSIONS: 'tab_vault_sessions',
-  SETTINGS: 'tab_vault_settings',
-  STATS: 'tab_vault_stats'
+  SESSIONS: 'tably_sessions',
+  SETTINGS: 'tably_settings',
+  STATS: 'tably_stats',
+  LEGACY_SESSIONS: 'tab_vault_sessions',
+  LEGACY_SETTINGS: 'tab_vault_settings',
+  LEGACY_STATS: 'tab_vault_stats'
 };
 
 const DEFAULT_SETTINGS = {
@@ -27,16 +30,21 @@ const PRESET_COLORS = [
   '#ef4444'  // Rose
 ];
 
-const TabVaultStorage = {
+const TablyStorage = {
   /**
    * Retrieve all saved tab sessions
    * @returns {Promise<Array>}
    */
   async getSessions() {
     return new Promise((resolve) => {
-      chrome.storage.local.get([STORAGE_KEYS.SESSIONS], (result) => {
-        const sessions = result[STORAGE_KEYS.SESSIONS] || [];
-        resolve(sessions);
+      chrome.storage.local.get([STORAGE_KEYS.SESSIONS, STORAGE_KEYS.LEGACY_SESSIONS], (result) => {
+        let sessions = result[STORAGE_KEYS.SESSIONS];
+        if (!sessions && result[STORAGE_KEYS.LEGACY_SESSIONS]) {
+          sessions = result[STORAGE_KEYS.LEGACY_SESSIONS];
+          // Migrate smoothly
+          chrome.storage.local.set({ [STORAGE_KEYS.SESSIONS]: sessions });
+        }
+        resolve(sessions || []);
       });
     });
   },
@@ -132,8 +140,9 @@ const TabVaultStorage = {
    */
   async getSettings() {
     return new Promise((resolve) => {
-      chrome.storage.local.get([STORAGE_KEYS.SETTINGS], (result) => {
-        resolve({ ...DEFAULT_SETTINGS, ...(result[STORAGE_KEYS.SETTINGS] || {}) });
+      chrome.storage.local.get([STORAGE_KEYS.SETTINGS, STORAGE_KEYS.LEGACY_SETTINGS], (result) => {
+        const saved = result[STORAGE_KEYS.SETTINGS] || result[STORAGE_KEYS.LEGACY_SETTINGS] || {};
+        resolve({ ...DEFAULT_SETTINGS, ...saved });
       });
     });
   },
@@ -156,8 +165,8 @@ const TabVaultStorage = {
    */
   async getStats() {
     return new Promise((resolve) => {
-      chrome.storage.local.get([STORAGE_KEYS.STATS], (result) => {
-        resolve(result[STORAGE_KEYS.STATS] || { lifetimeTabsSaved: 0 });
+      chrome.storage.local.get([STORAGE_KEYS.STATS, STORAGE_KEYS.LEGACY_STATS], (result) => {
+        resolve(result[STORAGE_KEYS.STATS] || result[STORAGE_KEYS.LEGACY_STATS] || { lifetimeTabsSaved: 0 });
       });
     });
   },
@@ -281,8 +290,12 @@ const TabVaultStorage = {
   }
 };
 
+// Alias for backward compatibility
+const TabVaultStorage = TablyStorage;
+
 // Export for service worker if in module context, or window context
 if (typeof self !== 'undefined') {
-  self.TabVaultStorage = TabVaultStorage;
+  self.TablyStorage = TablyStorage;
+  self.TabVaultStorage = TablyStorage;
   self.PRESET_COLORS = PRESET_COLORS;
 }

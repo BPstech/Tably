@@ -1,5 +1,5 @@
 /**
- * TabVault - Full Dashboard Controller
+ * Tably - Full Dashboard Controller
  */
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', async () => {
    * Load sessions and update stats
    */
   async function loadDashboardData() {
-    sessions = await TabVaultStorage.getSessions();
+    sessions = await TablyStorage.getSessions();
     updateStats();
     renderGrid();
   }
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   function updateStats() {
     const totalSets = sessions.length;
     const totalTabs = sessions.reduce((sum, s) => sum + (s.tabs ? s.tabs.length : 0), 0);
-    const ramEst = TabVaultStorage.estimateMemorySaved(totalTabs);
+    const ramEst = TablyStorage.estimateMemorySaved(totalTabs);
 
     statSetsCount.textContent = totalSets.toString();
     statTabsCount.textContent = totalTabs.toString();
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     countBadge.textContent = `${session.tabs.length} tabs`;
 
     const timeAgo = document.createElement('span');
-    timeAgo.textContent = TabVaultStorage.formatTimeAgo(session.createdAt);
+    timeAgo.textContent = TablyStorage.formatTimeAgo(session.createdAt);
 
     meta.appendChild(countBadge);
     meta.appendChild(timeAgo);
@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       const fav = document.createElement('img');
       fav.className = 'tab-favicon';
-      fav.src = tab.favIconUrl || TabVaultStorage.getFaviconFallback(tab.url);
+      fav.src = tab.favIconUrl || TablyStorage.getFaviconFallback(tab.url);
       fav.onerror = () => { fav.style.display = 'none'; };
 
       const tabTitle = document.createElement('span');
@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       `;
       removeBtn.addEventListener('click', async (e) => {
         e.stopPropagation();
-        await TabVaultStorage.removeTabFromSession(session.id, index);
+        await TablyStorage.removeTabFromSession(session.id, index);
         await loadDashboardData();
         showToast('Tab removed');
       });
@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     `;
     deleteBtn.addEventListener('click', async () => {
       if (confirm(`Delete collection "${session.name}"?`)) {
-        await TabVaultStorage.deleteSession(session.id);
+        await TablyStorage.deleteSession(session.id);
         await loadDashboardData();
         showToast('Collection deleted');
       }
@@ -322,7 +322,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const save = async () => {
       const newName = input.value.trim() || currentName;
       if (newName !== currentName) {
-        await TabVaultStorage.updateSession(session.id, { name: newName });
+        await TablyStorage.updateSession(session.id, { name: newName });
         await loadDashboardData();
         showToast('Renamed collection');
       } else {
@@ -371,7 +371,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
         const name = `Workspace Stash • ${timeStr}`;
 
-        await TabVaultStorage.saveSession({
+        await TablyStorage.saveSession({
           name,
           tabs: validTabs
         });
@@ -390,13 +390,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Export Backup
     exportJsonBtn.addEventListener('click', async () => {
       try {
-        const jsonStr = await TabVaultStorage.exportJSON();
+        const jsonStr = await TablyStorage.exportJSON();
         const blob = new Blob([jsonStr], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         const date = new Date().toISOString().slice(0, 10);
         a.href = url;
-        a.download = `tabvault_backup_${date}.json`;
+        a.download = `tably_backup_${date}.json`;
         a.click();
         URL.revokeObjectURL(url);
         showToast('Backup downloaded successfully!');
@@ -413,7 +413,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       try {
         const text = await file.text();
-        await TabVaultStorage.importJSON(text, 'merge');
+        await TablyStorage.importJSON(text, 'merge');
         await loadDashboardData();
         showToast('Tab collections imported successfully!');
       } catch (err) {
@@ -440,10 +440,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     clearAllSetsBtn.addEventListener('click', async () => {
       if (sessions.length === 0) return;
       if (confirm('Are you sure you want to delete ALL saved tab sets? This cannot be undone unless you have a backup.')) {
-        await TabVaultStorage.saveSettings({}); // keep settings
+        await TablyStorage.saveSettings({}); // keep settings
         await chrome.storage.local.set({ [STORAGE_KEYS.SESSIONS]: [] });
         await loadDashboardData();
-        TabVaultStorage.broadcastUpdate();
+        TablyStorage.broadcastUpdate();
         showToast('All collections cleared');
       }
     });
