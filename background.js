@@ -11,7 +11,7 @@ async function updateBadge() {
     const count = sessions.length;
     if (count > 0) {
       chrome.action.setBadgeText({ text: count.toString() });
-      chrome.action.setBadgeBackgroundColor({ color: '#6366f1' }); // Indigo
+      chrome.action.setBadgeBackgroundColor({ color: '#0071e3' }); // Apple System Blue
     } else {
       chrome.action.setBadgeText({ text: '' });
     }

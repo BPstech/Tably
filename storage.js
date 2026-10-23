@@ -20,14 +20,14 @@ const DEFAULT_SETTINGS = {
 };
 
 const PRESET_COLORS = [
-  '#6366f1', // Indigo
-  '#3b82f6', // Blue
-  '#06b6d4', // Cyan
-  '#10b981', // Emerald
-  '#f59e0b', // Amber
-  '#ec4899', // Pink
-  '#8b5cf6', // Purple
-  '#ef4444'  // Rose
+  '#0071e3', // Apple Blue
+  '#30d158', // Apple Green
+  '#ff9f0a', // Apple Orange
+  '#ff453a', // Apple Red
+  '#bf5af2', // Apple Purple
+  '#5e5ce6', // Apple Indigo
+  '#64d2ff', // Apple Teal
+  '#8e8e93'  // Apple Gray
 ];
 
 const TablyStorage = {

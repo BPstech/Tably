@@ -2,28 +2,28 @@
 
   <img src="icons/icon128.png" alt="Tably Logo" width="96" height="96" />
 
-  # Tably 🗄️⚡
-  ### The High-Performance Tab Session Manager for Google Chrome
+  # Tably
+  ### High-Performance Tab Session Manager for Google Chrome
 
   <p align="center">
-    <strong>Save tab sets with custom names, reclaim gigabytes of RAM by closing them, and restore your exact workflow in one click anytime.</strong>
+    <strong>Save tab sets with custom names, reclaim system memory by closing them, and restore workflows on demand.</strong>
   </p>
 
   <p align="center">
-    <a href="#-key-features"><img src="https://img.shields.io/badge/Manifest-V3-6366f1?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Manifest V3" /></a>
-    <a href="#-privacy--permissions"><img src="https://img.shields.io/badge/Privacy-100%25%20Local-10b981?style=for-the-badge&logo=shield&logoColor=white" alt="100% Local" /></a>
-    <a href="#-how-to-install"><img src="https://img.shields.io/badge/Chrome-Extension-4285F4?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Chrome Extension" /></a>
-    <a href="https://github.com/BPstech/Tably"><img src="https://img.shields.io/badge/GitHub-BPstech%2FTably-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Repository" /></a>
+    <a href="#features"><img src="https://img.shields.io/badge/Manifest-V3-0071e3?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Manifest V3" /></a>
+    <a href="#privacy--permissions"><img src="https://img.shields.io/badge/Privacy-100%25%20Local-30d158?style=for-the-badge&logo=shield&logoColor=white" alt="100% Local" /></a>
+    <a href="#installation"><img src="https://img.shields.io/badge/Chrome-Extension-0071e3?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Chrome Extension" /></a>
+    <a href="https://github.com/BPstech/Tably"><img src="https://img.shields.io/badge/GitHub-BPstech%2FTably-1d1d1f?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Repository" /></a>
   </p>
 
   <p align="center">
-    <a href="#-the-problem">The Problem</a> •
-    <a href="#-screenshots--ui-tour">Screenshots</a> •
-    <a href="#-key-features">Key Features</a> •
-    <a href="#-how-to-install">Installation</a> •
-    <a href="#-usage-guide">Usage Guide</a> •
-    <a href="#-shortcuts">Shortcuts</a> •
-    <a href="#-architecture">Architecture</a>
+    <a href="#overview">Overview</a> •
+    <a href="#screenshots">Screenshots</a> •
+    <a href="#features">Features</a> •
+    <a href="#installation">Installation</a> •
+    <a href="#usage">Usage</a> •
+    <a href="#shortcuts">Shortcuts</a> •
+    <a href="#architecture">Architecture</a>
   </p>
 
   ---
@@ -34,25 +34,25 @@
 
 <br/>
 
-## 💡 The Problem Tably Solves
+## Overview
 
-When multitasking, researching, or context-switching between projects, it's easy to accumulate **20, 40, or 60+ open tabs**. You cannot close them because you'll lose your train of thought, but keeping them open:
+When multitasking, researching, or context-switching between projects, browsers frequently accumulate dozens of open tabs. Users avoid closing them to prevent losing context, but maintaining open tabs introduces major inefficiencies:
 
-* 🚨 **Drains System RAM**: Each open Chrome tab consumes ~150–250 MB of memory. 30 tabs can easily devour 5 to 8 GB of RAM.
-* 🔋 **Kills Battery Life**: Heavy background scripts drain laptop battery and trigger noisy fans.
-* 🌪️ **Clutters Your Brain**: Tab titles shrink until they are illegible, turning your browser into a wall of indistinguishable favicons.
+* **System Memory Pressure**: Active Chromium tabs consume considerable memory, often 150 MB to 250 MB per tab. A session of 30 tabs can consume 5 GB to 8 GB of RAM.
+* **Battery Consumption**: Active background scripts trigger sustained CPU wakeups, reducing laptop battery life.
+* **Visual Congestion**: Tab strips compress until page titles and icons become unidentifiable.
 
-**Tably provides the cleanest solution:**
-1. **Name and tag** your current window's tabs into a labeled collection.
-2. **Close them immediately** to free memory with the **Save & Close** button.
-3. **Restore all tabs in one click** when you are ready to resume—either in a fresh window or grouped right into your active workspace as a **Chrome Tab Group**!
+**Tably provides a structured, native-grade workflow:**
+1. **Name and tag** open windows into categorized sessions.
+2. **Close tabs immediately** to release RAM using the **Save & Close** command.
+3. **Restore sessions in one click** at any time—either into dedicated windows or directly into **Chrome Tab Groups**.
 
 ---
 
-## 📸 Screenshots & UI Tour
+## Screenshots
 
-### 1. Modern Popup Interface
-Compact, dark-first popup UI featuring dynamic RAM consumption estimators, instant naming, vibrant color tags, and one-click stashing actions.
+### 1. Popup Interface
+A compact, dark-mode popup interface with real-time memory usage estimates, session naming, system color tags, and single-click stashing actions.
 
 <div align="center">
   <img src="screenshots/popup-interface.png" alt="Tably Popup Interface" width="520" />
@@ -60,8 +60,8 @@ Compact, dark-first popup UI featuring dynamic RAM consumption estimators, insta
 
 <br/>
 
-### 2. Selective Tab Stashing Drawer
-Need to keep your background music or blank scratchpad open? Expand the tab drawer and deselect any tab before saving.
+### 2. Selective Tab Stashing
+Review and selectively exclude specific background tabs before saving a session.
 
 <div align="center">
   <img src="screenshots/popup-expanded-tabs.png" alt="Tably Selective Stash Drawer" width="520" />
@@ -69,8 +69,8 @@ Need to keep your background music or blank scratchpad open? Expand the tab draw
 
 <br/>
 
-### 3. Full-Screen Session Dashboard & Search
-A dedicated workspace (`dashboard.html`) showing aggregate metrics (active collections, total saved tabs, RAM reclaimed), backup utilities, and real-time deep search across session titles, page names, and URLs.
+### 3. Session Dashboard & Search
+A full-screen management interface (`dashboard.html`) showing aggregate metrics, backup tools, and instantaneous multi-attribute search across sessions and tab URLs.
 
 <div align="center">
   <img src="screenshots/dashboard-overview.png" alt="Tably Full Dashboard" width="100%" />
@@ -78,8 +78,8 @@ A dedicated workspace (`dashboard.html`) showing aggregate metrics (active colle
 
 <br/>
 
-### 4. Real-Time Instant Filtering
-Filter through dozens of saved tab sets effortlessly as you type.
+### 4. Search Filtering
+Filter through saved collections instantaneously as you type.
 
 <div align="center">
   <img src="screenshots/dashboard-search.png" alt="Tably Dashboard Search" width="100%" />
@@ -87,90 +87,89 @@ Filter through dozens of saved tab sets effortlessly as you type.
 
 ---
 
-## ✨ Key Features
+## Features
 
 | Feature | Description |
 | :--- | :--- |
-| ⚡ **Save & Close (RAM Saver)** | Instantly stashes active tabs and closes them, reclaiming hundreds of megabytes or gigabytes of memory. |
-| 💾 **Save Only Mode** | Creates a reliable restore point while keeping your current window and tabs untouched. |
-| 🗂️ **Chrome Tab Groups** | Restore any collection directly as a named, color-coded native Chrome Tab Group inside your current window. |
-| 🏷️ **Smart Naming & Color Tags** | Auto-generates sensible session names or accepts custom titles with 8 vibrant color categories. |
-| 📋 **Selective Tab Stashing** | Collapsible tab list lets you review and uncheck specific tabs before saving. |
-| 🔍 **Deep Instant Search** | Real-time filter across session titles, page titles, and destination URLs. |
-| 📑 **Tab Inspection & Editing** | Expand any saved set to view, open individually, rename, or delete specific tabs. |
-| 💻 **Full-Featured Dashboard** | Full-page management interface with memory freed counters and batch controls. |
-| 📦 **JSON Backup & Import** | Complete portability—export your collections to JSON or restore them on any computer. |
-| 🔒 **100% Private & Offline** | Zero telemetry, zero analytics, zero external API dependencies. All data stays inside your browser. |
-| ⌨️ **Keyboard Shortcut** | Press `Alt + Shift + S` to stash your active window instantly without opening the popup. |
+| **Save & Close (Memory Saver)** | Stashes active tabs and closes them immediately, releasing occupied system memory. |
+| **Save Only Mode** | Creates a session snapshot while leaving your active tabs open and undisturbed. |
+| **Chrome Tab Groups** | Restores sessions directly as native, color-coded Chrome Tab Groups inside your active window. |
+| **Session Naming & Color Tags** | Auto-generates clean session titles with support for custom names and system color tags. |
+| **Selective Stashing** | Collapsible tab drawer allows granular selection of tabs prior to saving. |
+| **Instant Deep Search** | Real-time search across session names, individual page titles, and destination URLs. |
+| **Tab Inspection & Management** | Expand saved sessions to review, open individual items, rename, or remove tabs. |
+| **Full Management Console** | Dedicated dashboard view with aggregate memory metrics and batch operations. |
+| **JSON Backup & Restore** | Export session databases to standard JSON format or import them across workstations. |
+| **Offline Privacy** | Fully local architecture without external servers, telemetry, or third-party tracking. |
+| **Keyboard Shortcut** | Trigger quick stashes via `Alt + Shift + S` without opening the popup UI. |
 
 ---
 
-## 📥 How to Install
+## Installation
 
-Tably is built natively with **Chrome Extension Manifest V3** and runs directly in any Chromium-based browser (Google Chrome, Brave, Microsoft Edge, Arc, Opera, Vivaldi).
+Tably is built on **Chrome Extension Manifest V3** and runs on any Chromium-based browser (Google Chrome, Brave, Microsoft Edge, Arc, Opera, Vivaldi).
 
-### Step-by-Step Instructions:
+### Setup Instructions:
 
 1. **Clone or Download** the repository:
    ```bash
    git clone https://github.com/BPstech/Tably.git
    ```
-   *(Or download and extract the ZIP archive into a local folder).*
 
-2. Open Google Chrome and go to the Extensions page:
+2. Open Chrome and navigate to the Extensions management page:
    ```text
    chrome://extensions/
    ```
 
-3. Enable **"Developer mode"** via the toggle switch in the top-right corner.
+3. Enable **Developer mode** using the toggle switch in the upper-right corner.
 
-4. Click the **"Load unpacked"** button in the top-left menu.
+4. Click the **Load unpacked** button in the upper-left toolbar.
 
-5. Select the project folder (the folder containing `manifest.json`).
+5. Select the project directory containing `manifest.json`.
 
-6. Click the puzzle icon in Chrome's top toolbar and **pin Tably** for convenient one-click access!
-
----
-
-## 🛠️ Usage Guide
-
-### 1. Saving Tabs (Stashing)
-1. Click the **Tably** icon in your Chrome toolbar.
-2. Check the real-time **RAM consumption badge** (e.g. `6 tabs (~1.1 GB RAM)`).
-3. Enter a custom name (e.g., `ML Research Paper`, `Sprint Review 42`) or keep the auto-suggested title.
-4. Select a color tag to visually distinguish the set.
-5. *(Optional)* Click **"Includes all tabs"** to expand the list and uncheck any tabs you don't want to save.
-6. Click **"Save & Close Tabs"** to close the tabs and reclaim memory, or **"Save Only"** to keep tabs active.
-
-### 2. Restoring Tabs
-Tably offers flexible restoration modes:
-* **Restore All (Default)**: Opens all tabs in a clean, isolated Chrome window.
-* **Open as Tab Group**: Groups tabs directly into your active window under a colored Chrome Tab Group header.
-* **Add to Current Window**: Appends tabs to your current window without grouping.
-* **Open & Delete Set**: Single-use restore that opens the tabs and removes the session from storage.
-
-### 3. Managing Sessions & Dashboard
-* **Inline Rename**: Click directly on any session name to edit it in place.
-* **Inspect Tabs**: Click the list icon (`≡`) on any card to view and manage individual tabs.
-* **Full-Screen Dashboard**: Click the expand icon (`↗`) in the popup header to launch the full management console with backup/export controls.
+6. Pin **Tably** in the browser toolbar for quick access.
 
 ---
 
-## ⌨️ Shortcuts
+## Usage
+
+### 1. Saving Tabs
+1. Click the **Tably** toolbar icon.
+2. Review the memory estimation indicator.
+3. Enter a custom session title or retain the suggested name.
+4. Choose a color tag to organize the session.
+5. *(Optional)* Click the tab count summary to deselect specific tabs.
+6. Click **Save & Close Tabs** to free memory, or **Save Only** to preserve current tabs.
+
+### 2. Restoring Sessions
+Tably supports multiple restoration modes:
+* **Restore All (Default)**: Restores all tabs in a separate window.
+* **Open as Tab Group**: Groups tabs into a named, colored Tab Group in the active window.
+* **Add to Current Window**: Appends tabs directly to the active window without grouping.
+* **Open & Delete Set**: Restores tabs and deletes the session in a single action.
+
+### 3. Managing Collections
+* **Inline Renaming**: Click any session title to edit its name inline.
+* **Tab Management**: Click the list button on any session card to view and manage specific tabs.
+* **Dashboard View**: Click the external link icon in the popup header to open the full management dashboard.
+
+---
+
+## Shortcuts
 
 | Shortcut | Action | Scope |
 | :--- | :--- | :--- |
-| `Alt + Shift + S` *(Mac: `Alt + Shift + S`)* | **Quick Stash Window** (Saves all tabs and frees RAM) | Global in Chrome |
+| `Alt + Shift + S` | **Quick Stash Window** (Saves active tabs and frees memory) | Global |
 | `Enter` | Save session from popup input | Popup |
-| `Escape` | Close restore dropdown menus | Popup / Dashboard |
+| `Escape` | Dismiss open menus and popovers | Popup / Dashboard |
 
-> **Tip:** You can customize this shortcut anytime by visiting `chrome://extensions/shortcuts` in Chrome.
+> Shortcuts can be reconfigured at any time via `chrome://extensions/shortcuts`.
 
 ---
 
-## 🏛️ Architecture & Technologies
+## Architecture
 
-Tably is engineered with zero runtime bloat, requiring no heavy frameworks, virtual DOM overhead, or build pipelines:
+Tably is engineered with zero runtime build dependencies:
 
 ```text
 ┌────────────────────────────────────────────────────────┐
@@ -182,7 +181,7 @@ Tably is engineered with zero runtime bloat, requiring no heavy frameworks, virt
 │              │                          │              │
 │              ▼                          ▼              │
 │  ┌──────────────────────────────────────────────────┐  │
-│  │             Shared Storage Utility               │  │
+│  │             Shared Storage Layer                 │  │
 │  │                 (storage.js)                     │  │
 │  └───────────────────────┬──────────────────────────┘  │
 │                          │                             │
@@ -202,29 +201,29 @@ Tably is engineered with zero runtime bloat, requiring no heavy frameworks, virt
 └────────────────────────────────────────────────────────┘
 ```
 
-* **Chrome Extensions Manifest V3**: Built to the latest modern Chrome standards.
-* **Vanilla JavaScript (ES2022)**: Lightning-fast execution, zero dependencies, instantaneous UI responsiveness.
-* **Local Variable Fonts**: Bundles `Inter` variable font offline in `fonts/` for crisp, consistent typography across operating systems.
-* **Modern CSS Design System**: CSS custom properties, grid and flexbox layouts, glassmorphism accents, and native dark mode styling.
+* **Chrome Extensions Manifest V3**: Compliant with current extension platform specifications.
+* **Vanilla JavaScript (ES2022)**: Direct DOM operations with zero framework overhead.
+* **Typography**: Native Apple San Francisco font stack with offline fallback.
+* **CSS Architecture**: Custom properties, flexbox, and grid layouts designed according to Apple Human Interface Guidelines.
 
 ---
 
-## 📁 Directory Structure
+## Directory Structure
 
 ```text
 Tably/
-├── manifest.json              # Extension manifest (MV3, permissions, shortcuts)
+├── manifest.json              # Extension manifest (MV3 permissions, shortcuts)
 ├── background.js              # Service worker (shortcuts, badge updates, context menus)
-├── storage.js                 # Shared persistence layer & session data models
-├── popup.html                 # Extension toolbar popup layout
-├── popup.css                  # Popup dark-first styling & animations
-├── popup.js                   # Popup logic, tab query, and stash controller
-├── dashboard.html             # Full-screen session management workspace
-├── dashboard.css              # Dashboard layout, sidebar, & responsive card grid
-├── dashboard.js               # Dashboard controller, search, backup/restore
-├── generate_icons.py          # Icon generation utility using Pillow
-├── capture_screenshots.py     # Automated Retina screenshot capture script
-├── fonts/                     # Bundled offline typography
+├── storage.js                 # Persistence layer and data models
+├── popup.html                 # Toolbar popup layout
+├── popup.css                  # Popup interface styling
+├── popup.js                   # Popup controller and event bindings
+├── dashboard.html             # Full session management dashboard
+├── dashboard.css              # Dashboard layout and card styles
+├── dashboard.js               # Dashboard controller and search logic
+├── generate_icons.py          # Icon generation script
+├── capture_screenshots.py     # Automated screenshot capture utility
+├── fonts/                     # Bundled typography assets
 │   ├── inter.css
 │   ├── inter-variable-latin.woff2
 │   └── inter-variable-latin-ext.woff2
@@ -233,37 +232,37 @@ Tably/
 │   ├── icon32.png
 │   ├── icon48.png
 │   └── icon128.png
-├── screenshots/               # High-resolution documentation preview images
+├── screenshots/               # Interface documentation assets
 │   ├── dashboard-overview.png
 │   ├── dashboard-search.png
 │   ├── popup-interface.png
 │   └── popup-expanded-tabs.png
-└── README.md                  # Project documentation & guides
+└── README.md                  # Project documentation
 ```
 
 ---
 
-## 🛡️ Privacy & Permissions
+## Privacy & Permissions
 
-Tably is designed with a strict **Privacy-First** philosophy. We do not track you, we do not log your browsing habits, and we never transmit any data across the network.
+Tably operates with an offline-first architecture. No analytics, tracking, or network transmission occur.
 
-### Required Permissions Explained:
-* `tabs`: Required to read active URLs and titles to stash them and to restore tabs upon your command.
-* `storage`: Required to store your saved tab sessions locally in `chrome.storage.local`.
-* `tabGroups`: Required to group restored tabs into organized Chrome Tab Groups.
-* `contextMenus`: Optional context menu shortcuts for quick stashing.
+### Required Permissions:
+* `tabs`: Required to read tab URLs and titles for stashing and restoration.
+* `storage`: Required to persist saved sessions in `chrome.storage.local`.
+* `tabGroups`: Required to group restored tabs into native Chrome Tab Groups.
+* `contextMenus`: Optional context menu shortcuts for window stashing.
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
-Contributions, feature requests, and ideas are welcome!
-1. Fork the Project at [https://github.com/BPstech/Tably](https://github.com/BPstech/Tably).
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`).
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`).
-4. Push to the Branch (`git push origin feature/AmazingFeature`).
+Contributions and issue reports are welcome:
+1. Fork the repository at [https://github.com/BPstech/Tably](https://github.com/BPstech/Tably).
+2. Create a feature branch (`git checkout -b feature/NewFeature`).
+3. Commit your changes (`git commit -m 'Add NewFeature'`).
+4. Push to the branch (`git push origin feature/NewFeature`).
 5. Open a Pull Request.
 
 <div align="center">
-  <sub>Built with care for tab hoarders and power users everywhere. ⚡</sub>
+  <sub>Tab session manager for Chromium browsers.</sub>
 </div>

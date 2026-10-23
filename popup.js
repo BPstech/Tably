@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const indicator = document.createElement('div');
     indicator.className = 'session-indicator';
-    indicator.style.backgroundColor = session.color || '#6366f1';
+    indicator.style.backgroundColor = session.color || '#0071e3';
 
     const titleEl = document.createElement('span');
     titleEl.className = 'session-title';
@@ -552,6 +552,14 @@ document.addEventListener('DOMContentLoaded', async () => {
    */
   function mapToChromeGroupColor(hex) {
     switch (hex) {
+      case '#0071e3': return 'blue';
+      case '#30d158': return 'green';
+      case '#ff9f0a': return 'yellow';
+      case '#ff453a': return 'red';
+      case '#bf5af2': return 'purple';
+      case '#5e5ce6': return 'purple';
+      case '#64d2ff': return 'cyan';
+      case '#8e8e93': return 'grey';
       case '#6366f1': return 'blue';
       case '#3b82f6': return 'cyan';
       case '#06b6d4': return 'cyan';

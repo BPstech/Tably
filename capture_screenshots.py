@@ -26,7 +26,7 @@ FAVICONS = {
 MOCK_SESSIONS = [
     {
         "id": "sess_1",
-        "name": "🚀 Full-Stack AI App Architecture",
+        "name": "Full-Stack AI App Architecture",
         "color": "#6366f1",
         "createdAt": int((time.time() - 3600 * 2) * 1000),
         "tabs": [
@@ -39,7 +39,7 @@ MOCK_SESSIONS = [
     },
     {
         "id": "sess_2",
-        "name": "📚 LLM Reasoning & Transformer Research",
+        "name": "LLM Reasoning & Transformer Research",
         "color": "#10b981",
         "createdAt": int((time.time() - 3600 * 24) * 1000),
         "tabs": [
@@ -51,7 +51,7 @@ MOCK_SESSIONS = [
     },
     {
         "id": "sess_3",
-        "name": "🏖️ Tokyo & Kyoto Autumn 2026 Itinerary",
+        "name": "Tokyo & Kyoto Autumn Itinerary",
         "color": "#f59e0b",
         "createdAt": int((time.time() - 3600 * 48) * 1000),
         "tabs": [
@@ -62,7 +62,7 @@ MOCK_SESSIONS = [
     },
     {
         "id": "sess_4",
-        "name": "🎨 Design System & UI Kit Specs",
+        "name": "Design System & UI Kit Specs",
         "color": "#ec4899",
         "createdAt": int((time.time() - 3600 * 72) * 1000),
         "tabs": [

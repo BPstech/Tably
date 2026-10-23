@@ -1,39 +1,40 @@
 /* ==========================================================================
-   TabVault Popup Stylesheet
-   Modern, Dark-first, High-Performance UI
+   Tably Popup Stylesheet
+   Apple macOS Human Interface Inspired Design
    ========================================================================== */
 
 :root {
-  --bg-primary: #0b0f19;
-  --bg-secondary: #131b2e;
-  --bg-tertiary: #1e293b;
-  --bg-card: #162036;
-  --bg-card-hover: #1c2844;
-  --bg-input: #0f172a;
+  /* Apple Dark Palette */
+  --bg-primary: #1c1c1e;
+  --bg-secondary: #252528;
+  --bg-tertiary: #2c2c2e;
+  --bg-card: #28282b;
+  --bg-card-hover: #323236;
+  --bg-input: #151517;
   
   --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-strong: rgba(255, 255, 255, 0.16);
-  --border-focus: #6366f1;
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --border-focus: #0071e3;
 
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
+  --text-primary: #f5f5f7;
+  --text-secondary: #a1a1a6;
+  --text-muted: #6e6e73;
 
-  --accent-indigo: #6366f1;
-  --accent-indigo-hover: #4f46e5;
-  --accent-emerald: #10b981;
-  --accent-emerald-hover: #059669;
-  --accent-rose: #f43f5e;
-  --accent-amber: #f59e0b;
+  /* Apple System Colors */
+  --accent-primary: #0071e3;
+  --accent-primary-hover: #0077ed;
+  --accent-primary-active: #0062cc;
+  --accent-success: #30d158;
+  --accent-destructive: #ff453a;
+  --accent-warning: #ff9f0a;
 
   --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 14px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
   --radius-full: 9999px;
 
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 12px 0 rgba(0, 0, 0, 0.4);
-  --shadow-glow: 0 0 15px rgba(99, 102, 241, 0.3);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.18);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.22);
 }
 
 * {
@@ -48,9 +49,12 @@ body {
   min-height: 480px;
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "SF Pro", "Inter", -system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
-  line-height: 1.5;
+  line-height: 1.45;
+  letter-spacing: -0.006em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   user-select: none;
 }
@@ -59,27 +63,27 @@ input, button, textarea, select {
   font-family: inherit;
 }
 
-/* Custom Scrollbar */
+/* Minimalist macOS Overlay Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-primary);
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #334155;
+  background: rgba(255, 255, 255, 0.16);
   border-radius: var(--radius-full);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  background: rgba(255, 255, 255, 0.28);
 }
 
 .app-container {
   display: flex;
   flex-direction: column;
   padding: 14px 16px;
-  gap: 14px;
+  gap: 12px;
 }
 
 /* Header */
@@ -101,25 +105,27 @@ input, button, textarea, select {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-md);
-  background: linear-gradient(135deg, #6366f1, #3b82f6);
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
+  background: linear-gradient(180deg, #0077ed 0%, #0071e3 100%);
   color: #fff;
-  box-shadow: var(--shadow-glow);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .brand-title {
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: -0.3px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
   color: var(--text-primary);
-  line-height: 1.1;
+  line-height: 1.15;
 }
 
 .brand-sub {
   font-size: 11px;
-  color: var(--text-secondary);
+  color: var(--text-muted);
+  font-weight: 400;
 }
 
 .header-actions {
@@ -129,21 +135,21 @@ input, button, textarea, select {
 }
 
 .icon-btn {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--border-subtle);
   color: var(--text-secondary);
   border-radius: var(--radius-sm);
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
 }
 
 .icon-btn:hover {
-  background: var(--bg-tertiary);
+  background: rgba(255, 255, 255, 0.1);
   color: var(--text-primary);
   border-color: var(--border-strong);
 }
@@ -170,13 +176,14 @@ input, button, textarea, select {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  background: rgba(16, 185, 129, 0.15);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  color: #34d399;
-  padding: 3px 8px;
+  background: rgba(48, 209, 88, 0.12);
+  border: 1px solid rgba(48, 209, 88, 0.24);
+  color: var(--accent-success);
+  padding: 2px 8px;
   border-radius: var(--radius-full);
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
 .save-card-hint {
@@ -195,16 +202,16 @@ input, button, textarea, select {
   background: var(--bg-input);
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-md);
-  padding: 9px 12px;
+  padding: 8px 12px;
   color: var(--text-primary);
   font-size: 13px;
   outline: none;
-  transition: all 0.2s ease;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .session-name-input:focus {
   border-color: var(--border-focus);
-  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+  box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.32);
 }
 
 .session-name-input::placeholder {
@@ -220,22 +227,22 @@ input, button, textarea, select {
 }
 
 .color-dot {
-  width: 14px;
-  height: 14px;
+  width: 13px;
+  height: 13px;
   border-radius: 50%;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
   border: 2px solid transparent;
 }
 
 .color-dot:hover {
-  transform: scale(1.2);
+  transform: scale(1.18);
 }
 
 .color-dot.active {
   border-color: #fff;
-  transform: scale(1.25);
-  box-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
+  transform: scale(1.22);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
 }
 
 /* Tab Selection Dropdown */
@@ -245,7 +252,7 @@ input, button, textarea, select {
   justify-content: space-between;
   padding: 6px 10px;
   background: rgba(255, 255, 255, 0.03);
-  border: 1px dashed var(--border-subtle);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   font-size: 11px;
   color: var(--text-secondary);
@@ -259,7 +266,7 @@ input, button, textarea, select {
 }
 
 .chevron-icon {
-  transition: transform 0.25s ease;
+  transition: transform 0.2s ease;
 }
 
 .tab-select-toggle.expanded .chevron-icon {
@@ -271,7 +278,7 @@ input, button, textarea, select {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   overflow: hidden;
-  transition: max-height 0.3s ease, opacity 0.2s ease;
+  transition: max-height 0.25s ease, opacity 0.2s ease;
   max-height: 170px;
   display: flex;
   flex-direction: column;
@@ -289,7 +296,7 @@ input, button, textarea, select {
   align-items: center;
   justify-content: space-between;
   padding: 6px 10px;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.02);
   border-bottom: 1px solid var(--border-subtle);
   font-size: 11px;
 }
@@ -335,7 +342,7 @@ input, button, textarea, select {
 /* Save Buttons */
 .save-buttons-row {
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
+  grid-template-columns: 1.4fr 1fr;
   gap: 8px;
   margin-top: 2px;
 }
@@ -345,36 +352,39 @@ input, button, textarea, select {
   align-items: center;
   justify-content: center;
   gap: 6px;
-  padding: 9px 12px;
+  padding: 8px 12px;
   border-radius: var(--radius-md);
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
+  letter-spacing: -0.01em;
   cursor: pointer;
-  transition: all 0.2s ease;
-  border: none;
+  transition: all 0.15s ease;
+  border: 1px solid transparent;
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  background: var(--accent-primary);
   color: #fff;
-  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.35);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #4338ca, #4f46e5);
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.5);
-  transform: translateY(-1px);
+  background: var(--accent-primary-hover);
+}
+
+.btn-primary:active {
+  background: var(--accent-primary-active);
 }
 
 .btn-secondary {
-  background: var(--bg-tertiary);
-  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
   border: 1px solid var(--border-subtle);
 }
 
 .btn-secondary:hover {
-  background: #2a3952;
-  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.12);
   border-color: var(--border-strong);
 }
 
@@ -382,7 +392,7 @@ input, button, textarea, select {
 .sessions-section {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 9px;
 }
 
 .section-header {
@@ -399,18 +409,18 @@ input, button, textarea, select {
 }
 
 .section-title {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.04em;
 }
 
 .badge {
-  background: var(--bg-tertiary);
-  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
   font-size: 10px;
-  font-weight: 700;
+  font-weight: 500;
   padding: 1px 6px;
   border-radius: var(--radius-full);
 }
@@ -439,18 +449,19 @@ input, button, textarea, select {
   color: var(--text-primary);
   font-size: 11px;
   outline: none;
-  transition: all 0.2s;
+  transition: border-color 0.15s, box-shadow 0.15s;
 }
 
 .search-input:focus {
   border-color: var(--border-focus);
+  box-shadow: 0 0 0 2px rgba(0, 113, 227, 0.25);
 }
 
 /* Sessions List */
 .sessions-list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 7px;
   max-height: 240px;
   overflow-y: auto;
   padding-right: 2px;
@@ -461,16 +472,16 @@ input, button, textarea, select {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: 10px 12px;
+  padding: 9px 12px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  transition: border-color 0.2s, background-color 0.2s;
+  gap: 7px;
+  transition: border-color 0.15s, background-color 0.15s;
   position: relative;
 }
 
 .session-card:hover {
-  border-color: rgba(255, 255, 255, 0.14);
+  border-color: var(--border-strong);
   background-color: var(--bg-card-hover);
 }
 
@@ -498,11 +509,17 @@ input, button, textarea, select {
 
 .session-title {
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 500;
+  letter-spacing: -0.01em;
   color: var(--text-primary);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.session-title:hover {
+  color: #fff;
 }
 
 .session-meta {
@@ -519,15 +536,15 @@ input, button, textarea, select {
   padding: 1px 6px;
   border-radius: var(--radius-sm);
   color: var(--text-secondary);
-  font-weight: 500;
+  font-weight: 400;
 }
 
-/* Session Card Middle: Favicons preview */
+/* Favicons preview */
 .session-favicons-preview {
   display: flex;
   align-items: center;
   gap: 4px;
-  padding: 2px 0;
+  padding: 1px 0;
   overflow: hidden;
 }
 
@@ -550,23 +567,26 @@ input, button, textarea, select {
   align-items: center;
   justify-content: space-between;
   gap: 6px;
-  margin-top: 2px;
+  margin-top: 1px;
 }
 
 .restore-btn-group {
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 1px;
 }
 
 .btn-restore {
-  background: rgba(99, 102, 241, 0.15);
-  color: #818cf8;
-  border: 1px solid rgba(99, 102, 241, 0.3);
-  padding: 5px 10px;
-  border-radius: var(--radius-sm);
+  background: rgba(0, 113, 227, 0.12);
+  color: #2997ff;
+  border: 1px solid rgba(0, 113, 227, 0.28);
+  padding: 4px 9px;
+  border-top-left-radius: var(--radius-sm);
+  border-bottom-left-radius: var(--radius-sm);
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -575,31 +595,34 @@ input, button, textarea, select {
 }
 
 .btn-restore:hover {
-  background: #6366f1;
+  background: var(--accent-primary);
   color: #fff;
-  border-color: #6366f1;
+  border-color: var(--accent-primary);
 }
 
 .btn-restore-dropdown-trigger {
-  background: rgba(99, 102, 241, 0.1);
-  color: #818cf8;
-  border: 1px solid rgba(99, 102, 241, 0.3);
-  padding: 5px 6px;
-  border-radius: var(--radius-sm);
+  background: rgba(0, 113, 227, 0.1);
+  color: #2997ff;
+  border: 1px solid rgba(0, 113, 227, 0.28);
+  border-left: none;
+  padding: 4px 6px;
+  border-top-right-radius: var(--radius-sm);
+  border-bottom-right-radius: var(--radius-sm);
   cursor: pointer;
   display: flex;
   align-items: center;
+  transition: all 0.15s;
 }
 
 .btn-restore-dropdown-trigger:hover {
-  background: rgba(99, 102, 241, 0.25);
+  background: rgba(0, 113, 227, 0.25);
   color: #fff;
 }
 
 .session-tools {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 3px;
 }
 
 .tool-btn {
@@ -622,18 +645,18 @@ input, button, textarea, select {
 }
 
 .tool-btn.delete:hover {
-  color: var(--accent-rose);
-  background: rgba(244, 63, 94, 0.15);
+  color: var(--accent-destructive);
+  background: rgba(255, 69, 58, 0.12);
 }
 
 /* Expanded Tabs Inside Saved Session */
 .session-expanded-tabs {
   background: rgba(0, 0, 0, 0.25);
   border-radius: var(--radius-sm);
-  padding: 6px;
+  padding: 5px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
   max-height: 140px;
   overflow-y: auto;
 }
@@ -651,7 +674,7 @@ input, button, textarea, select {
 }
 
 .expanded-tab-item:hover {
-  background: rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.06);
   color: var(--text-primary);
 }
 
@@ -688,15 +711,15 @@ input, button, textarea, select {
 }
 
 .remove-tab-btn:hover {
-  color: var(--accent-rose);
+  color: var(--accent-destructive);
 }
 
 /* Restore Dropdown Menu */
 .restore-menu {
   position: absolute;
-  bottom: 42px;
+  bottom: 40px;
   left: 12px;
-  background: var(--bg-tertiary);
+  background: #2c2c2e;
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-md);
   padding: 4px;
@@ -704,7 +727,7 @@ input, button, textarea, select {
   z-index: 50;
   display: flex;
   flex-direction: column;
-  min-width: 170px;
+  min-width: 175px;
 }
 
 .menu-item {
@@ -723,7 +746,7 @@ input, button, textarea, select {
 }
 
 .menu-item:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 /* Empty State */
@@ -742,13 +765,14 @@ input, button, textarea, select {
 }
 
 .empty-state h3 {
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: 500;
   color: var(--text-primary);
   margin-bottom: 4px;
 }
 
 .empty-state p {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--text-muted);
   line-height: 1.4;
 }
@@ -763,16 +787,16 @@ input, button, textarea, select {
   bottom: 12px;
   left: 50%;
   transform: translateX(-50%);
-  background: #1e293b;
-  border: 1px solid var(--accent-indigo);
+  background: #2c2c2e;
+  border: 1px solid var(--border-strong);
   color: #fff;
-  padding: 8px 14px;
+  padding: 6px 14px;
   border-radius: var(--radius-full);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 500;
   box-shadow: var(--shadow-md);
   z-index: 100;
-  animation: toastFadeIn 0.25s ease-out;
+  animation: toastFadeIn 0.2s ease-out;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -781,7 +805,7 @@ input, button, textarea, select {
 @keyframes toastFadeIn {
   from {
     opacity: 0;
-    transform: translate(-50%, 10px);
+    transform: translate(-50%, 6px);
   }
   to {
     opacity: 1;
